@@ -19,27 +19,39 @@
 	<?php wp_head(); ?>
 </head>
 
-<body>
+<body class="row">
 
 	<header>
 		<div class="row">
-			<div id="main-logo" class="large-2 medium-3 small-6 columns">
-				<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
-			</div>
 
-			<div id="nav" class="large-4 medium-3 small-6 columns">
-				<ul>
-					<a href="">
-						<li>ABOUT</li>
-					</a>
-					<a href="">
-						<li>PROJECTS</li>
-					</a>
-					<a href="">
-						<li>CONTACT</li>
-					</a>
-				</ul>
-			</div>
+				<div id="main-logo" class="large-2 medium-3 small-5 columns">
+					<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
+				</div>
+
+				<ul class="title-area small-1 column">
+			    <li class="toggle-topbar menu-icon">
+			      <span class="menu-tab"></span>
+			      <span class="menu-tab"></span>
+			      <span class="menu-tab"></span>
+			    </li>
+	  		</ul>
+
+				<div id="nav" class="large-4 medium-3 small-6 columns">
+					<ul class="top-nav .no-bullet">
+						<li>
+							<a href="#">ABOUT</a>
+						</li>
+						<li>
+							<a href="#">PROJECTS</a>
+						</li>
+						<li>
+							<a href="#">CONTACT</a>
+						</li>
+					</ul>
+				</div>
+
 		</div>
-
 	</header>
+
+
+

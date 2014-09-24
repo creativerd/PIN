@@ -24,7 +24,7 @@ meta.foundation-mq-xxlarge {
 meta.foundation-data-attribute-namespace {
   font-family: false; }
 
-html, body {
+html {
   height: 100%; }
 
 *,
@@ -48,7 +48,9 @@ body {
   font-style: normal;
   line-height: 150%;
   position: relative;
-  cursor: auto; }
+  cursor: auto;
+  margin-top: 4% !important;
+  margin-bottom: 0 !important;}
 
 a:hover {
   cursor: pointer; }
@@ -1025,15 +1027,15 @@ a {
 p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.6;
   margin-bottom: 1.25rem;
   text-rendering: optimizeLegibility; }
   p.lead {
-    font-size: 1.21875rem;
+    font-size: 14px;
     line-height: 1.6; }
   p aside {
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: 1.35;
     font-style: italic; }
 
