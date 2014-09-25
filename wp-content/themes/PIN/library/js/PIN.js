@@ -85,53 +85,53 @@ jQuery(document).ready(function($) {
 		this.container.height(currentHeight);
 	}
 
-
 	// Homepage Slideshow
-	if($('div#home-slideshow-wrapper').length !== 0) {
+	$('img').load(function() {
+		if($('div#home-slideshow-wrapper').length !== 0) {
 
-		var now, before = new Date(),
-				delay = 4501,
-				homepageSlideshow = new Slideshow($('div#home-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
-		
-		homepageSlideshow.init();
+			var now, before = new Date(),
+					delay = 4501,
+					homepageSlideshow = new Slideshow($('div#home-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
+			
+			homepageSlideshow.init();
 
-		//homepageSlideshow.resizeContainer();
-		// slide every x seconds
-		var slideInterval = setInterval(function() {
-				now = new Date();
-				var elapsedTime = (now.getTime() - before.getTime());
+			//homepageSlideshow.resizeContainer();
+			// slide every x seconds
+			var slideInterval = setInterval(function() {
+					now = new Date();
+					var elapsedTime = (now.getTime() - before.getTime());
 
-				if(elapsedTime > delay) {
-					homepageSlideshow.slide();
-				}
+					if(elapsedTime > delay) {
+						homepageSlideshow.slide();
+					}
 
-				before = new Date(); 
-			}, delay);
-
-		// slide on click and reset interval
-		$('span.arrow-nav').on('click', function() {
-			var direction = $(this).data('direction');
-
-			homepageSlideshow.setCurrent(direction);
-			homepageSlideshow.slide();
-
-			clearInterval(slideInterval);
-
-			setTimeout(function() {
-				slideInterval = setInterval(function() {
-					homepageSlideshow.slide();
+					before = new Date(); 
 				}, delay);
-			}, 100);
 
-		});
+			// slide on click and reset interval
+			$('span.arrow-nav').on('click', function() {
+				var direction = $(this).data('direction');
 
-		$('li.home-slideshow-img-container').eq(0).css('display', 'block');
+				homepageSlideshow.setCurrent(direction);
+				homepageSlideshow.slide();
 
-		// resize container
-		$(window).on('resize', function() {
-			homepageSlideshow.resizeContainer();
-		});
-	}
+				clearInterval(slideInterval);
+
+				setTimeout(function() {
+					slideInterval = setInterval(function() {
+						homepageSlideshow.slide();
+					}, delay);
+				}, 100);
+
+			});
+
+			$('li.home-slideshow-img-container').eq(0).css('display', 'block');
+
+			// resize container
+			$(window).on('resize', homepageSlideshow.resizeContainer());
+		}
+	})
+	
 
 	// reveal menu
 	$('ul.title-area').on('click', function() {
