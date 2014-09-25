@@ -10,8 +10,7 @@
 		if(!empty($slideshow_img)) {
 			$img_url = $slideshow_img['sizes']['PIN-full-width'];
 
-			//echo '<li style="z-index:'. $index .'" class="home-slideshow-img-container"><img class="slide" src="' . $img_url . '" title="' . $title . '" /></li>';
-			echo '<div class=" home-slideshow-img-container">';
+			echo '<div class="home-slideshow-img-container">';
 			echo '	<img class="slide" src="' . $img_url . '" title="' . $slide_title . '" />';
 			if(!empty($slide_title)) {
 				echo '<div class="slide-title">' . $slide_title . '</div>';

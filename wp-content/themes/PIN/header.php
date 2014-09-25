@@ -24,11 +24,11 @@
 	<header>
 		<div class="row">
 
-				<div id="main-logo" class="large-2 medium-3 small-5 columns">
+				<div id="main-logo" class="large-2 medium-3 small-6 columns">
 					<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
 				</div>
 
-				<ul class="title-area small-1 column">
+				<ul class="title-area small-6 column">
 			    <li class="toggle-topbar menu-icon">
 			      <span class="menu-tab"></span>
 			      <span class="menu-tab"></span>
