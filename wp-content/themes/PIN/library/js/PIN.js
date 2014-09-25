@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+
 	function Slideshow(container, slides, nav) {
 		this.imgIndex = 0;
 		this.nextImg;
@@ -87,14 +88,25 @@ jQuery(document).ready(function($) {
 
 	// Homepage Slideshow
 	if($('div#home-slideshow-wrapper').length !== 0) {
-		var homepageSlideshow = new Slideshow($('div#home-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
+
+		var now, before = new Date(),
+				delay = 4501,
+				homepageSlideshow = new Slideshow($('div#home-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
+		
 		homepageSlideshow.init();
+
 		//homepageSlideshow.resizeContainer();
 		// slide every x seconds
 		var slideInterval = setInterval(function() {
-				homepageSlideshow.slide();
-			}, 4501);
+				now = new Date();
+				var elapsedTime = (now.getTime() - before.getTime());
 
+				if(elapsedTime > delay) {
+					homepageSlideshow.slide();
+				}
+
+				before = new Date(); 
+			}, delay);
 
 		// slide on click and reset interval
 		$('span.arrow-nav').on('click', function() {
@@ -108,7 +120,7 @@ jQuery(document).ready(function($) {
 			setTimeout(function() {
 				slideInterval = setInterval(function() {
 					homepageSlideshow.slide();
-				}, 4500);
+				}, delay);
 			}, 100);
 
 		});

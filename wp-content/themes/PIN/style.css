@@ -610,6 +610,25 @@ ul.title-area {
 
 
 /************************
+* PROJECTS
+*************************/
+
+.thumb-wrapper {
+	margin-bottom: 5px;
+}
+
+.thumb-wrapper img {
+	width: 100%;
+	height: auto;
+}
+
+h2.project-title {
+	font-size: 12px;
+	margin-bottom: 0;
+}
+
+
+/************************
 * FOOTER
 *************************/
 
