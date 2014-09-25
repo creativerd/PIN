@@ -25,7 +25,9 @@
 		<div class="row">
 
 				<div id="main-logo" class="large-2 medium-3 small-6 columns">
-					<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
+					<a href="<?php echo get_option('siteurl'); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
+					</a>
 				</div>
 
 				<ul class="title-area small-6 column">

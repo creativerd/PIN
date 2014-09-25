@@ -627,6 +627,21 @@ h2.project-title {
 	margin-bottom: 0;
 }
 
+.single-project-wrapper  {
+	margin-bottom: 10px;
+}
+
+.project-location, .project-category {
+	margin-top: -5px;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 640px) {
+	#project-description {
+		margin-top: 10px;
+	}
+
+}
+
 
 /************************
 * FOOTER

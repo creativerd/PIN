@@ -25,7 +25,7 @@
 			echo '	<a href="' . $link . '" rel="nofollow" >';
 			echo '		<img class="project-thumb" src="' . $post_thumb_url . '" title="' . $post_thumb_title . '" />';
 			echo '	</a>';
-			echo '	<h2 class="project-title">' . $title . '</h2>';
+			echo '	<h2 class="project-title"><a href="' . $link . '" rel="nofollow" >' . $title . '</a></h2>';
 			echo '</div>';
 		}
 	}
