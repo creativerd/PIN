@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-echo 'hello fuck'; 
+echo 'hello world'; 
 ?>
 
 <?php get_footer(); ?>

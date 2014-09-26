@@ -19,7 +19,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body>
+<body class="row">
 
 	<header>
 		<div class="row">
@@ -28,18 +28,20 @@
 			</div>
 
 			<div id="nav" class="large-4 medium-3 small-6 columns">
-				<ul>
-					<a href="">
-						<li>ABOUT</li>
-					</a>
-					<a href="">
-						<li>PROJECTS</li>
-					</a>
-					<a href="">
-						<li>CONTACT</li>
-					</a>
+				<ul class="top-nav .no-bullet">
+					<li>
+						<a href="#">ABOUT</a>
+					</li>
+					<li>
+						<a href="#">PROJECTS</a>
+					</li>
+					<li>
+						<a href="#">CONTACT</a>
+					</li>
 				</ul>
 			</div>
 		</div>
-
 	</header>
+
+
+
