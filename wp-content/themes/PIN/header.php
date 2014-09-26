@@ -11,7 +11,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php wp_title( '|', true, 'right' ); ?>PIN</title>
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/library/js/html5.js"></script>
 	<![endif]-->
@@ -23,9 +23,20 @@
 
 	<header>
 		<div class="row">
+
 			<div id="main-logo" class="large-2 medium-3 small-6 columns">
-				<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
+				<a href="<?php echo get_option('siteurl'); ?>">
+					<img src="<?php echo get_template_directory_uri(); ?>/library/images/PIN-logo.svg" title="PIN LOGO" alt="Project Internaltional Architecture logo"/>
+				</a>
 			</div>
+
+			<ul class="title-area small-6 column">
+		    <li class="toggle-topbar menu-icon">
+		      <span class="menu-tab"></span>
+		      <span class="menu-tab"></span>
+		      <span class="menu-tab"></span>
+		    </li>
+  		</ul>
 
 			<div id="nav" class="large-4 medium-3 small-6 columns">
 				<ul class="top-nav .no-bullet">
@@ -33,13 +44,14 @@
 						<a href="#">ABOUT</a>
 					</li>
 					<li>
-						<a href="#">PROJECTS</a>
+						<a href="<?php echo get_option('siteurl'); ?>/projects">PROJECTS</a>
 					</li>
 					<li>
 						<a href="#">CONTACT</a>
 					</li>
 				</ul>
 			</div>
+
 		</div>
 	</header>
 

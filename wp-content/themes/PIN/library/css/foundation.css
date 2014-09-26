@@ -24,7 +24,7 @@ meta.foundation-mq-xxlarge {
 meta.foundation-data-attribute-namespace {
   font-family: false; }
 
-html, body {
+html {
   height: 100%; }
 
 *,
@@ -48,7 +48,9 @@ body {
   font-style: normal;
   line-height: 150%;
   position: relative;
-  cursor: auto; }
+  cursor: auto;
+  margin-top: 3% !important;
+  margin-bottom: 0 !important;}
 
 a:hover {
   cursor: pointer; }
@@ -119,8 +121,8 @@ select {
     margin-right: 0; }
   .row .row {
     width: auto;
-    margin-left: -0.1875em;
-    margin-right: -0.1875em;
+    /* margin-left: -0.1875em;
+    margin-right: -0.1875em; */
     margin-top: 0;
     margin-bottom: 0;
     max-width: none; }
@@ -147,7 +149,7 @@ select {
   float: left; }
 
 [class*="column"] + [class*="column"]:last-child {
-  float: right; }
+  /*float: right;*/ }
 
 [class*="column"] + [class*="column"].end {
   float: left; }
