@@ -4,8 +4,8 @@
 	<div id="home-slideshow-wrapper" class="large-6 small-6 columns">
 	<?php
 	for($i = 0, $index = 11; $i < 11; $i++, $index--) {
-		$slideshow_img = get_field('slideshow_images_' . $i, 17);
-		$slide_title = get_field('slideshow_images_' . $i . '_title', 17);
+		$slideshow_img = get_field('slideshow_images_' . $i, 7);
+		$slide_title = get_field('slideshow_images_' . $i . '_title', 7);
 
 		if(!empty($slideshow_img)) {
 			$img_url = $slideshow_img['sizes']['PIN-full-width'];
