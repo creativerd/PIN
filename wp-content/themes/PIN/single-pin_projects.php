@@ -8,7 +8,7 @@
 	if( have_posts() ) {
 		while( have_posts() ) {
 
-			echo '<div id="home-slideshow-wrapper" class="single-project-wrapper large-6 small-6 columns">';
+			echo '<div id="single-project-slideshow-wrapper" class="single-project-wrapper large-6 small-6 columns">';
 
 			the_post();
 
@@ -60,7 +60,6 @@
 			}
 			echo '</div>
 				</div>';
-			
 
 			/** PROJECT DESCRIPTION **/
 			if(!empty($post_description)) {
@@ -72,6 +71,12 @@
 
 		} // end while
 	} // end if
+
+			/** PREV NEXT NAV **/
+			next_post_link( '<strong>%link</strong>', 'NEXT&nbsp;' );
+			echo '&#124;';
+			previous_post_link('<strong>%link</strong>', '&nbsp;PREVIOUS');
+
 	?>
 	</div>
 </div>

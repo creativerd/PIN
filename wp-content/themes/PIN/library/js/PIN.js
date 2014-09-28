@@ -52,9 +52,7 @@ jQuery(document).ready(function($) {
 
 		$(this.nextImg).css(nextImgCss);
 
-		currentImg.animate({
-			'opacity' : 0
-		}, 1001, function(){
+		currentImg.fadeOut(700, function(){
 				currentImg.css(reset);
 			}
 		);
@@ -99,10 +97,13 @@ jQuery(document).ready(function($) {
 			// call worker
 			// this will avoid setTimeout to freeze when switching to a new browser window
 			homepageSlideshow.worker = new Worker('wp-content/themes/PIN/library/js/homepageSlideshow.js');
+
+			homepageSlideshow.worker.postMessage('start');
+
 			homepageSlideshow.worker.addEventListener('message', function(e) {
 				homepageSlideshow.slide();
 			}, false);
-			homepageSlideshow.worker.postMessage('start');
+			
 
 			homepageSlideshow.resizeContainer();
 
@@ -128,10 +129,63 @@ jQuery(document).ready(function($) {
 			$('li.home-slideshow-img-container').eq(0).css('display', 'block');
 
 			// resize container
-			$(window).on('resize', homepageSlideshow.resizeContainer());
+			$(window).on('resize', function() {
+				homepageSlideshow.resizeContainer();
+			});
 		}
 	});
-	
+
+	// Single Project slideshow
+	$('img').load(function() {
+		if($('div#single-project-slideshow-wrapper').length !== 0) {
+
+			var now, before = new Date(),
+					delay = 4501,
+					index = 0,
+					homepageSlideshow = new Slideshow($('div#single-project-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
+			
+			homepageSlideshow.init();
+
+			// call worker
+			// this will avoid setTimeout to freeze when switching to a new browser window
+			homepageSlideshow.worker = new Worker('../../wp-content/themes/PIN/library/js/singleProjectSlideshow.js');
+
+			homepageSlideshow.worker.postMessage('start');
+
+			homepageSlideshow.worker.addEventListener('message', function(e) {
+				homepageSlideshow.slide();
+			}, false);
+			
+
+			homepageSlideshow.resizeContainer();
+
+			// slide on click and reset interval
+			$('span.arrow-nav').on('click', function() {
+
+				var direction = $(this).data('direction');
+				homepageSlideshow.setCurrent(direction);
+
+				homepageSlideshow.worker.postMessage('navigate');
+
+				//homepageSlideshow.worker.addEventListener('message', function(e) {
+				//	homepageSlideshow.slide();
+				//}, false);
+
+				setTimeout(function() {
+					homepageSlideshow.slide();
+				}, 100);
+
+			});
+			
+
+			$('li.home-slideshow-img-container').eq(0).css('display', 'block');
+
+			// resize container
+			$(window).on('resize', function() {
+				homepageSlideshow.resizeContainer();
+			});
+		}
+	});
 
 	// reveal menu
 	$('ul.title-area').on('click', function() {
