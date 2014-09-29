@@ -58,8 +58,16 @@
 					echo '	<div class="small-6 medium-2 large-2 columns"></div>';
 				}
 			}
-			echo '</div>
-				</div>';
+			echo '</div>';
+
+			/** POST NAVIGATION **/
+			echo '	<div class="post-nav">';
+			next_post_link( '%link', '<span style="font-size:21px;">&lsaquo;</span>NEXT&nbsp;' );
+			echo '&nbsp;';
+			previous_post_link('%link', '&nbsp;PREVIOUS<span style="font-size:21px;">&rsaquo;</span>');
+			echo '	</div>';
+
+			echo '</div>';
 
 			/** PROJECT DESCRIPTION **/
 			if(!empty($post_description)) {
@@ -72,10 +80,7 @@
 		} // end while
 	} // end if
 
-			/** PREV NEXT NAV **/
-			next_post_link( '<strong>%link</strong>', 'NEXT&nbsp;' );
-			echo '&#124;';
-			previous_post_link('<strong>%link</strong>', '&nbsp;PREVIOUS');
+
 
 	?>
 	</div>

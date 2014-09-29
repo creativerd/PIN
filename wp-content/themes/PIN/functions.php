@@ -42,5 +42,18 @@ add_filter('show_admin_bar', '__return_false');
 require_once('post-types.php');
 
 
+/*** SPLIT TEXT IN COLUMNS ***/
+function spilt_text($text, $column_number) {
+	$middle = strrpos(substr($text, 0, floor(strlen($text) / 2)), ' ') + 1;
+	$col1 = substr($text, 0, $middle);
+	$col2 = substr($text, $middle);
+
+	if($column_number == 1) {
+		return $col1;
+	} else {
+		return $col2;
+	}
+}
+
 
 ?>

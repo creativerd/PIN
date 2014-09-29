@@ -41,13 +41,13 @@
 			<div id="nav" class="large-4 medium-3 small-6 columns">
 				<ul class="top-nav .no-bullet">
 					<li>
-						<a href="#">ABOUT</a>
+						<a href="<?php echo get_option('siteurl'); ?>/about">ABOUT</a>
 					</li>
 					<li>
 						<a href="<?php echo get_option('siteurl'); ?>/projects">PROJECTS</a>
 					</li>
 					<li>
-						<a href="#">CONTACT</a>
+						<a href="<?php echo get_option('siteurl'); ?>/contact">CONTACT</a>
 					</li>
 				</ul>
 			</div>

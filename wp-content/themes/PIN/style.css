@@ -446,6 +446,12 @@ a:hover {
 	text-decoration: underline;
 }
 
+p {
+	font-size: 14px !important;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif !important;
+  color: #000;
+}
+
 /************************
 * HEADER
 *************************/
@@ -628,6 +634,7 @@ ul.title-area {
 h2.project-title {
 	font-size: 12px;
 	margin-bottom: 0;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
 .single-project-wrapper  {
@@ -638,12 +645,39 @@ h2.project-title {
 	margin-top: -5px;
 }
 
+#project-info {
+	text-transform: uppercase;
+	padding-left: 0;
+}
+
+#project-info div {
+	padding-left: 0;
+}
+
 @media only screen and (min-width : 320px) and (max-width : 640px) {
 	#project-description {
 		margin-top: 10px;
 	}
-
 }
+
+
+/************************
+* ABOUT
+*************************/
+
+#about-left-column {
+	padding-right: 1.5%;
+}
+
+#about-right-column {
+	padding-left: 1.5%;
+}
+
+
+/************************
+* CONTACT
+*************************/
+
 
 
 /************************
