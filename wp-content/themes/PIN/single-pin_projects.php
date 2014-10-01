@@ -62,9 +62,11 @@
 
 			/** POST NAVIGATION **/
 			echo '	<div class="post-nav">';
-			next_post_link( '%link', '<span style="font-size:21px;">&lsaquo;</span>NEXT&nbsp;' );
+			echo '<span style="font-size:21px;">&lsaquo;</span>';
+			next_post_link( '%link', 'PREVIOUS' ); 
 			echo '&nbsp;';
-			previous_post_link('%link', '&nbsp;PREVIOUS<span style="font-size:21px;">&rsaquo;</span>');
+			previous_post_link('%link', 'NEXT'); 
+			echo '<span style="font-size:21px;">&rsaquo;</span>';
 			echo '	</div>';
 
 			echo '</div>';

@@ -11,9 +11,56 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
+
+@font-face {
+    font-family: 'gothamlight';
+    src: url('library/fonts/gotham-light-webfont.eot');
+    src: url('library/fonts/gotham-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('library/fonts/gotham-light-webfont.woff2') format('woff2'),
+         url('library/fonts/gotham-light-webfont.woff') format('woff'),
+         url('library/fonts/gotham-light-webfont.ttf') format('truetype'),
+         url('library/fonts/gotham-light-webfont.svg#gothamlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothambook';
+    src: url('library/fonts/gotham-book-webfont.eot');
+    src: url('library/fonts/gotham-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('library/fonts/gotham-book-webfont.woff2') format('woff2'),
+         url('library/fonts/gotham-book-webfont.woff') format('woff'),
+         url('library/fonts/gotham-book-webfont.ttf') format('truetype'),
+         url('library/fonts/gotham-book-webfont.svg#gothambook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothammedium';
+    src: url('library/fonts/gotham-medium-webfont.eot');
+    src: url('library/fonts/gotham-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('library/fonts/gotham-medium-webfont.woff2') format('woff2'),
+         url('library/fonts/gotham-medium-webfont.woff') format('woff'),
+         url('library/fonts/gotham-medium-webfont.ttf') format('truetype'),
+         url('library/fonts/gotham-medium-webfont.svg#gothammedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /**
  * Reset
- **/
+**/
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
@@ -416,14 +463,14 @@ hr {
  * to achieve a better experience. See http://core.trac.wordpress.org/ticket/25898.
  */
 ::selection {
-	background: #24890d;
-	color: #fff;
+	background: rgb(210, 237, 255);
+	color: #000;
 	text-shadow: none;
 }
 
 ::-moz-selection {
-	background: #24890d;
-	color: #fff;
+	background: rgb(210, 237, 255);
+	color: #000;
 	text-shadow: none;
 }
 
@@ -439,7 +486,7 @@ html {
 body {
 	background-color: #FFF;
   font-size: 14px;
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-family: 'gothammedium', Helvetica, Arial, sans-serif;
 }
 
 a:hover {
@@ -448,8 +495,15 @@ a:hover {
 
 p {
 	font-size: 14px !important;
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif !important;
+  font-family: 'Arimo', Helvetica, Arial, sans-serif;
+	font-weight: 400;
   color: #000;
+  margin-bottom: 10px !important;
+}
+
+p:empty {
+	margin:0;
+	height: 0;
 }
 
 /************************
@@ -458,13 +512,25 @@ p {
 
 header {
 	margin-bottom: 15px;
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+	font-family: 'gothammedium', Helvetica, Arial, sans-serif;
 	font-size: 14px;
 }
 
 #main-logo {
 	left: 0;
 	float: left;
+	padding-left: 0;
+	height: 22px;
+}
+
+h1 {
+	font-family: 'gothammedium', Helvetica, Arial, sans-serif !important;
+	font-size: 14px !important;
+	margin: 3px 0 !important;
+}
+
+a.home-link:hover {
+	text-decoration: none;
 }
 
 #main-logo>img {
@@ -475,13 +541,23 @@ header {
 ul.top-nav {
 	text-align: right;
 	margin: 0!important;
+	font-size: 14px !important;
 }
 
 ul.top-nav li {
 	display: inline-block;
 	font-size: 14px;
+	margin-left: 5px;
 }
 
+ul.top-nav li.active {
+	text-decoration: underline;
+}
+
+ul.top-nav li a {
+	width: 100%;
+	display: block;
+}
 
 ul.title-area {
 	display: none;
@@ -497,18 +573,54 @@ ul.title-area {
 
 
 @media only screen and (min-width : 320px) and (max-width : 640px) {
+
+	body {
+		margin-top: 2% !important;
+	}
+
+	header {
+		margin-bottom: 10px;
+	}
+
+	#main-logo {
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 13px !important;
+	}
 	
 	ul.top-nav {
 		text-align: left;
 		margin-left: 5px;
 		padding-top: 15px;
-		display: none;
+		/* display: none; */
 	}
 
 	ul.top-nav li {
-		font-size: 12px;
+		font-size: 13px;
 		display: block;
 		margin-left: 0;
+		text-align: center;
+		background-color: #FAFAFA;
+		margin-bottom: 5px;
+		height: 30px;
+		color: #FFF;
+		padding-top: 4px;
+		cursor: pointer;
+	}
+
+	ul.top-nav li:hover, ul.top-nav li.active {
+		background-color: rgb(210, 237, 255);
+		text-decoration: none;
+	}
+
+	ul.top-nav li a {
+		color: #000;
+	}
+
+	ul.top-nav li a:hover {
+		text-decoration: none;
 	}
 
 	ul.title-area {
@@ -532,6 +644,7 @@ ul.title-area {
 
 	.slide-title {
 		font-size: 12px;
+		margin-bottom: 5px;
 	}
 }
 
@@ -549,7 +662,8 @@ ul.title-area {
 
 .content {
 	height: auto;
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+	font-family: 'Arimo', Helvetica, Arial, sans-serif;
+	font-weight: 400;
 	font-size: 14px;
 }
 
@@ -562,7 +676,7 @@ ul.title-area {
 
 .home-slideshow-img-container {
 	list-style: none;
-	position: absolute !important;
+	position: absolute;
 	top: 0;
 }
 
@@ -608,6 +722,22 @@ ul.title-area {
 	background-position:  24px 0;
 }
 
+.arrow-nav {
+	transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	-webkit-transform: scale(0.9);
+	opacity: 0.75;
+}
+
+.arrow-nav:hover {
+	transform: scale(1);
+	-ms-transform: scale(1);
+	-webkit-transform: scale(1);
+	opacity: 1;
+}
+}
+
+
 @media only screen and (min-width : 320px) and (max-width : 640px) {
 	.slideshow-arrow-next, .slideshow-arrow-prev {
 		-ms-transform: scale(0.6);
@@ -634,7 +764,8 @@ ul.title-area {
 h2.project-title {
 	font-size: 12px;
 	margin-bottom: 0;
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+	font-family: 'Arimo', Helvetica, Arial, sans-serif;
+	font-weight: 400;
 }
 
 .single-project-wrapper  {
@@ -648,10 +779,17 @@ h2.project-title {
 #project-info {
 	text-transform: uppercase;
 	padding-left: 0;
+	font-family: 'Arimo', Helvetica, Arial, sans-serif;
+	font-weight: 400;
 }
 
 #project-info div {
 	padding-left: 0;
+}
+
+.display-all {
+	position: relative;
+	display: block !important;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 640px) {

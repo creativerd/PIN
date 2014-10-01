@@ -23,7 +23,9 @@ jQuery(document).ready(function($) {
 		});
 
 		//display nav
-		this.nav.fadeIn();
+		if( $(window).width() > 640 ) {
+			this.nav.fadeIn();
+		}
 
 		// resize container
 		this.container.height(this.slideHeight);
@@ -90,13 +92,16 @@ jQuery(document).ready(function($) {
 			var now, before = new Date(),
 					delay = 4501,
 					index = 0,
-					homepageSlideshow = new Slideshow($('div#home-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
+					container = $('div#home-slideshow-wrapper'),
+					slides = $('div.home-slideshow-img-container'),
+					nav = $('div.slideshow-nav'),
+					homepageSlideshow = new Slideshow(container, slides, nav);
 			
 			homepageSlideshow.init();
 
 			// call worker
 			// this will avoid setTimeout to freeze when switching to a new browser window
-			homepageSlideshow.worker = new Worker('wp-content/themes/PIN/library/js/homepageSlideshow.js');
+			homepageSlideshow.worker = new Worker('../../wp-content/themes/PIN/library/js/homepageSlideshow.js');
 
 			homepageSlideshow.worker.postMessage('start');
 
@@ -106,6 +111,13 @@ jQuery(document).ready(function($) {
 			
 
 			homepageSlideshow.resizeContainer();
+
+			if( $(window).width() < 640 ) {
+				slides.addClass('display-all');
+				homepageSlideshow.worker.postMessage('stop');
+				container.css('height', 'auto');
+				nav.hide();
+			};
 
 			// slide on click and reset interval
 			$('span.arrow-nav').on('click', function() {
@@ -131,58 +143,96 @@ jQuery(document).ready(function($) {
 			// resize container
 			$(window).on('resize', function() {
 				homepageSlideshow.resizeContainer();
+
+				if( $(window).width() < 640 ) {
+					homepageSlideshow.worker.postMessage('stop');
+					slides.addClass('display-all');
+					container.css('height', 'auto');
+					nav.hide();
+
+				} else {
+					if(slides.hasClass('display-all')) {
+						slides.removeClass('display-all');
+						homepageSlideshow.worker.postMessage('start');
+						nav.show();
+					}
+				}
 			});
+
 		}
 	});
 
 	// Single Project slideshow
 	$('img').load(function() {
+
 		if($('div#single-project-slideshow-wrapper').length !== 0) {
 
 			var now, before = new Date(),
 					delay = 4501,
 					index = 0,
-					homepageSlideshow = new Slideshow($('div#single-project-slideshow-wrapper'), $('div.home-slideshow-img-container'), $('div.slideshow-nav'));
-			
-			homepageSlideshow.init();
+					container = $('div#single-project-slideshow-wrapper'),
+					slides = $('div.home-slideshow-img-container'),
+					nav = $('div.slideshow-nav'),
+					projectSlideshow = new Slideshow(container, slides, nav);
+
+			projectSlideshow.init();
 
 			// call worker
 			// this will avoid setTimeout to freeze when switching to a new browser window
-			homepageSlideshow.worker = new Worker('../../wp-content/themes/PIN/library/js/singleProjectSlideshow.js');
+			projectSlideshow.worker = new Worker('../../wp-content/themes/PIN/library/js/singleProjectSlideshow.js');
 
-			homepageSlideshow.worker.postMessage('start');
+			projectSlideshow.worker.postMessage('start');
 
-			homepageSlideshow.worker.addEventListener('message', function(e) {
-				homepageSlideshow.slide();
+			projectSlideshow.worker.addEventListener('message', function(e) {
+				projectSlideshow.slide();
 			}, false);
-			
 
-			homepageSlideshow.resizeContainer();
+			projectSlideshow.resizeContainer();
+
+			if( $(window).width() < 640 ) {
+				slides.addClass('display-all');
+				projectSlideshow.worker.postMessage('stop');
+				container.css('height', 'auto');
+				nav.hide();
+			};
 
 			// slide on click and reset interval
 			$('span.arrow-nav').on('click', function() {
 
 				var direction = $(this).data('direction');
-				homepageSlideshow.setCurrent(direction);
+				projectSlideshow.setCurrent(direction);
 
-				homepageSlideshow.worker.postMessage('navigate');
+				projectSlideshow.worker.postMessage('stop');
 
-				//homepageSlideshow.worker.addEventListener('message', function(e) {
-				//	homepageSlideshow.slide();
+				//projectSlideshow.worker.addEventListener('message', function(e) {
+				//	projectSlideshow.slide();
 				//}, false);
 
 				setTimeout(function() {
-					homepageSlideshow.slide();
+					projectSlideshow.slide();
 				}, 100);
 
 			});
-			
 
 			$('li.home-slideshow-img-container').eq(0).css('display', 'block');
 
 			// resize container
 			$(window).on('resize', function() {
-				homepageSlideshow.resizeContainer();
+				projectSlideshow.resizeContainer();
+
+				if( $(window).width() < 640 ) {
+					projectSlideshow.worker.postMessage('stop');
+					slides.addClass('display-all');
+					container.css('height', 'auto');
+					nav.hide();
+
+				} else {
+					if(slides.hasClass('display-all')) {
+						slides.removeClass('display-all');
+						singleProjectSlideshow.worker.postMessage('start');
+						nav.show();
+					}
+				}
 			});
 		}
 	});

@@ -8,7 +8,7 @@ self.addEventListener('message', function(e) {
     		self.postMessage('slide');
  			}, 4501);
    	break;
-   	case 'navigate' :
+   	case 'stop' :
    		clearInterval(slideInterval);
 		break;
 	};

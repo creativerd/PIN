@@ -34,8 +34,18 @@ function PIN_scripts() {
 add_action( 'wp_enqueue_scripts', 'PIN_scripts' );
 
 
-/*** REMOVE ADIN BAR ***/
+/*** REMOVE ADMIN BAR ***/
 add_filter('show_admin_bar', '__return_false');
+
+/*** REMOVE BACKEND SECTIONS ***/
+function remove_menus(){
+	remove_menu_page( 'edit.php' );                   //Posts
+	//remove_menu_page( 'upload.php' );               //Media
+	remove_menu_page( 'edit.php?post_type=page' );    //Pages
+	remove_menu_page( 'edit-comments.php' );          //Comments
+}
+
+add_action('admin_menu', 'remove_menus');
 
 
 /*** CUSTOM POSTS ***/
@@ -44,16 +54,28 @@ require_once('post-types.php');
 
 /*** SPLIT TEXT IN COLUMNS ***/
 function spilt_text($text, $column_number) {
-	$middle = strrpos(substr($text, 0, floor(strlen($text) / 2)), ' ') + 1;
-	$col1 = substr($text, 0, $middle);
-	$col2 = substr($text, $middle);
+	$text_length = strlen($text);
+	$third = $text_length / 3;
+
+	$one_third = strrpos(substr($text, 0, floor($third)), '.') + 1;
+	$two_thirds = strrpos(substr($text, $one_third, floor($third * 2)), '.') + 1;
+	$three_thirds = strpos(substr($text, $two_thirds ), '.') + 1;
+	
+	$col1 = substr($text, 0, $one_third);
+	$col2 = substr($text, $one_third, ($text_length - $two_thirds));
+	$col3 = substr($text, ($two_thirds + $three_thirds));
 
 	if($column_number == 1) {
 		return $col1;
-	} else {
+	} else if($column_number == 2){
 		return $col2;
+	} else {
+		return $col3;
 	}
 }
+
+/*** REMOVE EMPTY O TAGS ***/
+remove_filter('the_content', 'wpautop');
 
 
 ?>
